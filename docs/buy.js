@@ -8,7 +8,7 @@
 // Paddle の client-side token。ページに載せて公開するもので、秘密ではない（TouchRotator と同じアカウント）。
 const PADDLE_TOKEN = "live_caa95e53994f8145b0400f7618d";
 // Profilink（980 円・買い切り）の価格 ID。Paddle で商品を作ったら入れる（pri_…）。
-const PADDLE_PRICE = "";
+const PADDLE_PRICE = "pri_01m7mt5t0y8pj56pzxyx4wbz63";
 const THANKS_URL = "https://profilink.tsubomi.jp/thanks.html";
 
 const configured = PADDLE_TOKEN !== "" && PADDLE_PRICE !== "" && typeof Paddle !== "undefined";
