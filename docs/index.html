@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profilink &mdash; Mac用 リンク振り分けユーティリティ</title>
+<meta name="description" content="リンクを押すと、URL に合わせて正しいブラウザ・正しいアカウント（Chrome プロファイル）で自動で開く Mac 用のリンク振り分けユーティリティ。会社やクライアントごとにアカウントを使い分ける人のために。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://profilink.tsubomi.jp/">
+<meta property="og:title" content="Profilink — Mac用 リンク振り分けユーティリティ">
+<meta property="og:description" content="リンクを押すと、URL に合わせて正しいブラウザ・正しいアカウントで自動で開きます。">
+<meta property="og:image" content="https://profilink.tsubomi.jp/appicon.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="appicon.png">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="appicon.png" alt="" width="22" height="22">Profilink</a>
+  <nav class="links"><a href="#features">できること</a><a href="#price">価格</a><a href="#specs">動作環境</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <p class="eyebrow"><i></i>Mac用 リンク振り分けユーティリティ &middot; macOS 13 以降</p>
+    <h1>そのリンク、<br>正しいアカウントで開く。</h1>
+    <p class="tagline">会社ごと、クライアントごとに Chrome のプロファイルを分けていると、リンクを押すたびに「違うアカウントで開いてログインし直し」が起きます。Profilink は URL を見て、正しいブラウザ・正しいプロファイルで自動で開きます。</p>
+    <div class="cta">
+      <a class="button" href="https://github.com/tsubomi-works/profilink-releases/releases/latest">14 日間無料でためす</a>
+      <a class="button ghost" href="#price">価格を見る</a>
+    </div>
+    <p class="note">Apple Developer ID で署名し、Apple の公証を受けています &middot; 買い切り 980 円</p>
+  </div>
+  <figure class="shot-figure">
+    <img class="shot" src="panel.png" alt="Profilink のメニューバーのパネル。最近開いたリンクと、どのプロファイルで開いたかが並んでいる" width="320" height="436">
+    <figcaption>メニューバーのパネル。どのリンクを、どのアカウントで開いたかが分かります。</figcaption>
+  </figure>
+</div></div>
+
+<section id="features"><div class="wrap">
+  <h2>できること</h2>
+  <p class="lede">Profilink を Mac の「デフォルトの Web ブラウザ」にしておくだけ。Claude・Slack・メールなどで押したリンクを、URL ごとに振り分けます。</p>
+
+  <div class="showcase reveal">
+    <div class="showcase-text">
+      <h3><span class="num">1</span>URL ごとに、開くアカウントを決める</h3>
+      <div class="ba">
+        <div class="before"><b>これまで</b>最後に使った Chrome で開き、権限エラーでログインし直し</div>
+        <div class="after"><b>Profilink</b>ルールどおりのプロファイルで、ログイン済みのまま開く</div>
+      </div>
+      <p>ルールは「ドメイン」「前方一致」「正規表現」の 3 種類。<code>localhost:3000</code> のようにポート番号でも分けられるので、開発中のダッシュボードもプロジェクトごとに振り分けられます。</p>
+      <p class="step">設定画面の判定テストに URL を入れると、どのルールに当たるかをその場で確かめられます。</p>
+    </div>
+    <figure class="fig">
+      <div class="stage"><div class="gestures">
+        <div><b>dashboard.a-company.jp</b><span>Chrome — A 社のプロファイル</span></div>
+        <div><b>localhost:3000</b><span>Chrome — B 社のプロファイル</span></div>
+        <div><b>localhost:3001</b><span>Chrome — C 社のプロファイル</span></div>
+        <div><b>console.cloud.google.com/…project=d-</b><span>Chrome — D 社のプロファイル（正規表現）</span></div>
+        <div><b>それ以外</b><span>選択画面で選ぶ</span></div>
+      </div></div>
+      <figcaption>ルールの例。上から順に判定して、最初に当たったルールで開きます。</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase flip reveal">
+    <div class="showcase-text">
+      <h3><span class="num">2</span>決まっていないリンクは、その場で選ぶ</h3>
+      <div class="ba">
+        <div class="before"><b>これまで</b>URL をコピーして、正しい Chrome に貼り直す</div>
+        <div class="after"><b>Profilink</b>マウスの横に選択画面。数字キー 1 つで開く</div>
+      </div>
+      <p>どのルールにも当たらないリンクは、選択画面で開き先を選べます。<b>1〜9</b> で即決、<b>↑↓</b> と <b>return</b>、<b>esc</b> で取消。</p>
+      <p class="step">「このドメインは今後このプロファイルで開く」にチェックすれば、それがそのままルールになります。</p>
+    </div>
+    <figure class="fig">
+      <div class="macwin">
+        <div class="macwin-bar"><i></i><i></i><i></i><span>Profilink</span></div>
+        <img class="shot" src="chooser.png" alt="選択画面。開く URL と、Google Chrome・Microsoft Edge・Safari・Firefox の選択肢が並んでいる" width="440" height="401">
+      </div>
+      <figcaption>選択画面。Chrome のプロファイルがあれば、アカウントごとに並びます。</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase reveal">
+    <div class="showcase-text">
+      <h3><span class="num">3</span>プロファイルは自動で見つける</h3>
+      <div class="ba">
+        <div class="before"><b>ほかの方法</b>chrome://version でフォルダ名を調べて設定ファイルに書く</div>
+        <div class="after"><b>Profilink</b>名前・メールアドレス・アイコンごと自動で一覧に</div>
+      </div>
+      <p>Chrome・Microsoft Edge・Brave のプロファイルを自動で読み取ります。Safari・Arc・Firefox にも振り分けられます。</p>
+      <p class="step">設定はすべて画面から。設定ファイルを書く必要はありません。</p>
+    </div>
+    <figure class="fig">
+      <div class="stage"><div class="gestures">
+        <div><b>個人</b><span>Default</span></div>
+        <div><b>株式会社 A</b><span>Profile 3</span></div>
+        <div><b>株式会社 B</b><span>Profile 7</span></div>
+        <div><b>株式会社 C</b><span>Profile 8</span></div>
+      </div></div>
+      <figcaption>見つかったプロファイルの例。選択画面に出すかどうかも選べます。</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>こんな人に</h2>
+  <div class="features">
+    <div class="feature reveal">
+      <h3>会社ごとに Google アカウントが違う</h3>
+      <p>複数の会社やクライアントの仕事を、Chrome のプロファイルで分けている人に。</p>
+    </div>
+    <div class="feature reveal">
+      <h3>AI やチャットから管理画面を開く</h3>
+      <p>Claude や Slack に出たダッシュボードの URL が、いつも違うアカウントで開いてしまう人に。</p>
+    </div>
+    <div class="feature reveal">
+      <h3>開発環境がポート番号で分かれている</h3>
+      <p>localhost:3000 と 3001 で別の会社のログインが要る人に。</p>
+    </div>
+    <div class="feature reveal">
+      <h3>ブラウザ自体を使い分けている</h3>
+      <p>この URL だけは Safari で、のような使い分けも自動に。</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="price"><div class="wrap">
+  <h2>価格</h2>
+  <div class="price reveal">
+    <p class="amount">980 円 <small>買い切り・税込</small></p>
+    <ul class="price-list">
+      <li>まず <strong>14 日間、全機能を無料</strong>でためせます</li>
+      <li>今後の<strong>アップデートはすべて無料</strong>。アプリの中からボタン 1 つで更新できます</li>
+      <li>支払いは<strong>買い切りの 1 回だけ</strong>。月額も追加の請求もありません</li>
+    </ul>
+  </div>
+  <div class="cta" style="margin-top:1.5rem">
+    <button class="button" data-buy hidden>980 円で購入する</button>
+    <a class="button ghost" href="https://github.com/tsubomi-works/profilink-releases/releases/latest">まず無料でためす</a>
+  </div>
+  <p class="note">無料期間で確かめられるため、<a href="refund.html">購入後の返金は原則お受けしていません</a>。購入手続きは販売代行が売主として行います。</p>
+  <p class="note" data-not-yet>まもなく販売を開始します。それまでは無料でお使いいただけます。</p>
+</div></section>
+
+<section id="specs"><div class="wrap">
+  <h2>動作環境</h2>
+  <div class="scroller reveal"><table>
+    <tr><th>OS</th><td>macOS 13 (Ventura) 以降</td></tr>
+    <tr><th>Mac</th><td>Apple silicon &middot; Intel の両方</td></tr>
+    <tr><th>振り分け先</th><td>Google Chrome・Microsoft Edge・Brave（プロファイルごと）、Safari・Arc・Firefox</td></tr>
+    <tr><th>振り分けられるリンク</th><td>Chrome の外で押したリンク（Claude・Slack・メール・メモ・ターミナルなど）。Chrome の中で押したリンクは、そのまま Chrome で開きます</td></tr>
+    <tr><th>言語</th><td>日本語</td></tr>
+    <tr><th>署名</th><td>Apple Developer ID で署名・Apple の公証済み</td></tr>
+  </table></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>お問い合わせ</h2>
+  <p>ご質問・不具合は <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a> へ。</p>
+</div></section>
+
+<footer><div class="wrap">
+  <nav><a href="index.html">ホーム</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシー</a><a href="refund.html">返金</a><a href="tokushoho.html">特定商取引法に基づく表記</a></nav>
+  <p>お問い合わせ: <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a></p>
+  <p>&copy; 2026 tsubomi</p>
+</div></footer>
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script src="buy.js"></script>
+<script src="motion.js" defer></script>
+</body>
+</html>

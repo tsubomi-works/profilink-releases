@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ライセンスキー &mdash; Profilink</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="appicon.png">
+<style>
+  .key {
+    font-family: var(--mono); font-size: .95rem; word-break: break-all;
+    background: var(--panel); border: 1px solid var(--rule); border-radius: 8px;
+    padding: 1rem 1.1rem; margin: 1rem 0; line-height: 1.6;
+  }
+  .state { min-height: 6rem; }
+  .bad { color: var(--warn); }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="appicon.png" alt="" width="22" height="22">Profilink</a>
+</div></header>
+
+<section><div class="wrap"><article>
+  <h1 style="font-size:1.8rem">ありがとうございます</h1>
+  <div class="state" id="state"><p>ライセンスキーを用意しています…</p></div>
+  <div id="next" hidden>
+    <h2>入れ方</h2>
+    <ol>
+      <li>メニューバーの Profilink のアイコンを押し、下の「設定…」を押す</li>
+      <li>左の「情報」を開く</li>
+      <li>「ライセンス」の欄に上のキーを貼り付けて「認証する」を押す</li>
+    </ol>
+    <p class="note">同じキーをメールでもお送りしています。このページを閉じても、メールから入れられます。届かないときは <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a> までご連絡ください。</p>
+  </div>
+</article></div></section>
+
+<footer><div class="wrap">
+  <nav><a href="index.html">ホーム</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシー</a><a href="refund.html">返金</a><a href="tokushoho.html">特定商取引法に基づく表記</a></nav>
+  <p><a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a></p>
+</div></footer>
+
+<script>
+/**
+ * いま支払いが終わった購入のライセンスキーを出す（TouchRotator の thanks.html と同じ作り）。
+ *
+ * このページ自身は何も知らない。Paddle の取引番号をキーを渡す仕組み（Cloudflare Worker）に
+ * 渡し、そちらが Paddle に「本当に支払われたか」を確かめてからキーを返す。同じ取引番号には
+ * 必ず同じキーが返るので、読み込み直しても、閉じて開き直しても安全。
+ */
+// キーを渡す仕組みの URL。Cloudflare に Worker を置いたら入れる。
+const KEY_SERVICE = "";
+const MAIL = "info@tsubomi.jp";
+
+const state = document.getElementById("state");
+
+function say(text, bad) {
+  state.innerHTML = "";
+  const p = document.createElement("p");
+  if (bad) p.className = "bad";
+  p.textContent = text;
+  state.appendChild(p);
+}
+
+function showKey(key) {
+  state.innerHTML = "";
+  const label = document.createElement("p");
+  label.textContent = "あなたのライセンスキー：";
+  const box = document.createElement("div");
+  box.className = "key";
+  box.textContent = key;
+  state.append(label, box);
+  document.getElementById("next").hidden = false;
+}
+
+async function run() {
+  const id = new URLSearchParams(location.search).get("_ptxn");
+  if (!id) return say("購入の情報が見つかりません。購入後に表示されるページから開いてください。", true);
+  if (!KEY_SERVICE) return say("キーを取得できませんでした。" + MAIL + " までご連絡いただければ、すぐにお送りします。", true);
+  try {
+    const response = await fetch(`${KEY_SERVICE}?txn=${encodeURIComponent(id)}`);
+    const answer = await response.json();
+    if (response.status === 402) return say("この購入はまだ完了していません。支払いが終わってから、もう一度開いてください。", true);
+    if (!response.ok || !answer.key) return say("キーを取得できませんでした。" + MAIL + " までご連絡いただければ、すぐにお送りします。", true);
+    showKey(answer.key);
+  } catch {
+    say("キーを取得できませんでした。" + MAIL + " までご連絡いただければ、すぐにお送りします。", true);
+  }
+}
+
+run();
+</script>
+</body>
+</html>
