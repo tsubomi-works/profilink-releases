@@ -27,16 +27,30 @@ if (configured) {
   });
 }
 
+// クーポン付きのリンク（https://profilink.tsubomi.jp/?coupon=コード）から来た人は、
+// 購入画面に最初からそのコードが入った状態にする。100% 割引のコードなら 0 円で、
+// 普通の購入と同じようにキーの画面とメールが届く。
+const COUPON = (new URLSearchParams(location.search).get("coupon") || "").trim();
+
 document.querySelectorAll("[data-buy]").forEach((button) => {
   button.hidden = !configured;
+  if (COUPON) button.textContent = "クーポンを使って受け取る";
   button.addEventListener("click", (event) => {
     event.preventDefault();
-    Paddle.Checkout.open({
+    const checkout = {
       items: [{ priceId: PADDLE_PRICE, quantity: 1 }],
       settings: { locale: "ja" },
-    });
+    };
+    if (COUPON) checkout.discountCode = COUPON;
+    Paddle.Checkout.open(checkout);
   });
 });
+
+// クーポン付きのリンクで来た人は、価格の欄まで自動で移動する。
+if (COUPON && configured) {
+  const price = document.getElementById("price");
+  if (price) price.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 document.querySelectorAll("[data-not-yet]").forEach((note) => {
   note.hidden = configured;
