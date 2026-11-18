@@ -35,15 +35,9 @@
     </div>
     <p class="note">Signed with an Apple Developer ID and notarized by Apple &middot; JPY 980, one time</p>
   </div>
-  <figure class="fig">
-    <div class="stage"><div class="gestures">
-      <div><b>dashboard.client-a.com</b><span>Chrome — Client A</span></div>
-      <div><b>localhost:3000</b><span>Chrome — Client B</span></div>
-      <div><b>Links clicked in Slack</b><span>Chrome — Work</span></div>
-      <div><b>Links clicked in Messages</b><span>Chrome — Personal</span></div>
-      <div><b>Anything else</b><span>Pick in the chooser</span></div>
-    </div></div>
-    <figcaption>Example rules. They are checked from the top, and the first match wins.</figcaption>
+  <figure class="shot-figure">
+    <img class="shot menu-panel" src="panel.png" alt="The Profilink menu bar panel, listing recent links and the profile each one opened in" width="320" height="371">
+    <figcaption>The menu bar panel. See which link opened in which account.</figcaption>
   </figure>
 </div></div>
 
@@ -63,10 +57,10 @@
     </div>
     <figure class="fig">
       <div class="stage"><div class="gestures">
-        <div><b>dashboard.client-a.com</b><span>Chrome — Client A</span></div>
-        <div><b>localhost:3000</b><span>Chrome — Client B</span></div>
-        <div><b>localhost:3001</b><span>Chrome — Client C</span></div>
-        <div><b>console.cloud.google.com/…project=d-</b><span>Chrome — Client D (regex)</span></div>
+        <div><b>dashboard.acme.example</b><span>Chrome — Acme Inc.</span></div>
+        <div><b>localhost:3000</b><span>Chrome — Bluebird LLC</span></div>
+        <div><b>localhost:3001</b><span>Chrome — Cobalt Labs</span></div>
+        <div><b>console.cloud.google.com/…project=d-</b><span>Chrome — Delta Corp (regex)</span></div>
         <div><b>Anything else</b><span>Pick in the chooser</span></div>
       </div></div>
       <figcaption>Example rules. Checked from the top; the first match wins.</figcaption>
@@ -87,7 +81,7 @@
       <div class="stage"><div class="gestures">
         <div><b>Slack, Microsoft Teams</b><span>Chrome — Work</span></div>
         <div><b>Messages, LINE</b><span>Chrome — Personal</span></div>
-        <div><b>Mail + example.com</b><span>Edge — Client E</span></div>
+        <div><b>Mail + example.com</b><span>Edge — Echo Partners</span></div>
       </div></div>
       <figcaption>Source-app rules, on their own or with a URL pattern.</figcaption>
     </figure>
@@ -104,12 +98,10 @@
       <p class="step">Tick “Always open this domain here” and it becomes a rule.</p>
     </div>
     <figure class="fig">
-      <div class="stage"><div class="gestures">
-        <div><b>1</b><span>Chrome — Personal</span></div>
-        <div><b>2</b><span>Chrome — Client A</span></div>
-        <div><b>3</b><span>Microsoft Edge</span></div>
-        <div><b>4</b><span>Safari</span></div>
-      </div></div>
+      <div class="macwin app">
+        <div class="macwin-bar"><i></i><i></i><i></i><span>Profilink</span></div>
+        <img class="shot" src="chooser.png" alt="The chooser: the URL to open, with Chrome profiles, Microsoft Edge, Safari and Firefox listed" width="440" height="637">
+      </div>
       <figcaption>The chooser lists each Chrome profile separately.</figcaption>
     </figure>
   </div>
