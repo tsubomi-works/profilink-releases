@@ -338,7 +338,7 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
 /* Banded rather than ruled. Six hairlines in a row read as a form to fill
    in; the bands read as a list of pairs, which is what this is. */
 .gestures div:nth-child(odd) { background: var(--ground); }
-.gestures b { flex: none; width: 10rem; }
+.gestures b { flex: none; width: 10rem; overflow-wrap: anywhere; }
 .gestures span { color: var(--muted); }
 /* On a phone the two columns do not fit, so the result moves to its own
    line. Both halves have to be blocks and the result needs its arrow:

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profilink &mdash; open every link in the right browser profile on your Mac</title>
+<meta name="description" content="Profilink opens each link in the right browser and the right Chrome profile, automatically. For anyone who keeps a separate account for each company, client or project.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://profilink.tsubomi.jp/en/">
+<meta property="og:title" content="Profilink — open every link in the right profile">
+<meta property="og:description" content="Click a link and it opens in the right browser and the right account, automatically.">
+<meta property="og:image" content="https://profilink.tsubomi.jp/appicon.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<link rel="alternate" hreflang="ja" href="https://profilink.tsubomi.jp/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../appicon.png">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="../appicon.png" alt="" width="22" height="22">Profilink</a>
+  <nav class="links"><a href="#features">What it does</a><a href="#price">Price</a><a href="#specs">Requirements</a></nav>
+  <nav class="langs"><a href="../index.html">日本語</a><a href="index.html" aria-current="true">English</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <p class="eyebrow"><i></i>Link router for Mac &middot; macOS 13+</p>
+    <h1>Every link, in the right account.</h1>
+    <p class="tagline">If you keep a Chrome profile for each company or client, every link you click opens in whichever one you used last, and you end up signing in again. Profilink looks at the URL and opens it in the right browser and the right profile, automatically.</p>
+    <div class="cta">
+      <a class="button" href="https://github.com/tsubomi-works/profilink-releases/releases/latest">Try it free for 14 days</a>
+      <a class="button ghost" href="#price">See the price</a>
+    </div>
+    <p class="note">Signed with an Apple Developer ID and notarized by Apple &middot; JPY 980, one time</p>
+  </div>
+  <figure class="fig">
+    <div class="stage"><div class="gestures">
+      <div><b>dashboard.client-a.com</b><span>Chrome — Client A</span></div>
+      <div><b>localhost:3000</b><span>Chrome — Client B</span></div>
+      <div><b>Links clicked in Slack</b><span>Chrome — Work</span></div>
+      <div><b>Links clicked in Messages</b><span>Chrome — Personal</span></div>
+      <div><b>Anything else</b><span>Pick in the chooser</span></div>
+    </div></div>
+    <figcaption>Example rules. They are checked from the top, and the first match wins.</figcaption>
+  </figure>
+</div></div>
+
+<section id="features"><div class="wrap">
+  <h2>What it does</h2>
+  <p class="lede">Make Profilink your Mac’s default web browser and you are done. Links you click in Claude, Slack, Mail and elsewhere are routed by your rules.</p>
+
+  <div class="showcase reveal">
+    <div class="showcase-text">
+      <h3><span class="num">1</span>Choose the account for each URL</h3>
+      <div class="ba">
+        <div class="before"><b>Before</b>It opens in the Chrome you used last, and you hit a permissions error and sign in again</div>
+        <div class="after"><b>Profilink</b>It opens in the profile your rule says, already signed in</div>
+      </div>
+      <p>Rules match by domain, by prefix, by regular expression, or everything. Ports count too, so <code>localhost:3000</code> and <code>localhost:3001</code> can open in different profiles.</p>
+      <p class="step">Type a URL into the test box in Settings to see which rule it hits.</p>
+    </div>
+    <figure class="fig">
+      <div class="stage"><div class="gestures">
+        <div><b>dashboard.client-a.com</b><span>Chrome — Client A</span></div>
+        <div><b>localhost:3000</b><span>Chrome — Client B</span></div>
+        <div><b>localhost:3001</b><span>Chrome — Client C</span></div>
+        <div><b>console.cloud.google.com/…project=d-</b><span>Chrome — Client D (regex)</span></div>
+        <div><b>Anything else</b><span>Pick in the chooser</span></div>
+      </div></div>
+      <figcaption>Example rules. Checked from the top; the first match wins.</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase flip reveal">
+    <div class="showcase-text">
+      <h3><span class="num">2</span>Route by the app you clicked in</h3>
+      <div class="ba">
+        <div class="before"><b>Before</b>Work links from Slack open in your personal profile</div>
+        <div class="after"><b>Profilink</b>Slack and Teams links go to Work, Messages and LINE to Personal</div>
+      </div>
+      <p>A rule can apply only to links clicked in particular apps. Use it on its own, or together with a URL rule.</p>
+      <p class="step">Settings › History shows which app each link came from, and can turn it into a rule.</p>
+    </div>
+    <figure class="fig">
+      <div class="stage"><div class="gestures">
+        <div><b>Slack, Microsoft Teams</b><span>Chrome — Work</span></div>
+        <div><b>Messages, LINE</b><span>Chrome — Personal</span></div>
+        <div><b>Mail + example.com</b><span>Edge — Client E</span></div>
+      </div></div>
+      <figcaption>Source-app rules, on their own or with a URL pattern.</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase reveal">
+    <div class="showcase-text">
+      <h3><span class="num">3</span>Pick on the spot when no rule matches</h3>
+      <div class="ba">
+        <div class="before"><b>Before</b>Copy the URL and paste it into the right Chrome window</div>
+        <div class="after"><b>Profilink</b>A chooser by the pointer. One number key and it opens</div>
+      </div>
+      <p>Links that match no rule open the chooser. <b>1–9</b> picks right away, <b>↑↓</b> and <b>return</b> also work, <b>esc</b> cancels.</p>
+      <p class="step">Tick “Always open this domain here” and it becomes a rule.</p>
+    </div>
+    <figure class="fig">
+      <div class="stage"><div class="gestures">
+        <div><b>1</b><span>Chrome — Personal</span></div>
+        <div><b>2</b><span>Chrome — Client A</span></div>
+        <div><b>3</b><span>Microsoft Edge</span></div>
+        <div><b>4</b><span>Safari</span></div>
+      </div></div>
+      <figcaption>The chooser lists each Chrome profile separately.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section id="more"><div class="wrap">
+  <h2>And also</h2>
+  <div class="features">
+    <div class="feature reveal">
+      <h3>Wrapped links, judged by what’s inside</h3>
+      <p>Outlook and Teams Safe Links, and redirects from Google, Slack, Facebook and others, carry the real URL inside. Profilink checks that real URL, so your domain rules still work for links from company email.</p>
+    </div>
+    <div class="feature reveal">
+      <h3>One key for “just this once”</h3>
+      <p>Hold <b>⌥</b> while clicking a link to get the chooser even when a rule matches. Hold <b>⇧</b> to skip the rules and open it where you chose in Settings.</p>
+    </div>
+    <div class="feature reveal">
+      <h3>Private windows</h3>
+      <p>Any rule can open its links in a private (Incognito) window. Works with Chrome, Edge, Brave and Firefox.</p>
+    </div>
+    <div class="feature reveal">
+      <h3>Profiles found for you</h3>
+      <p>Chrome, Microsoft Edge and Brave profiles are read automatically, with names, email addresses and pictures. Safari, Arc and Firefox work as destinations too.</p>
+    </div>
+    <div class="feature reveal">
+      <h3>A history of where links went</h3>
+      <p>The latest 500 links, the app each came from and where it opened, kept on this Mac only. Clear it or turn it off at any time.</p>
+    </div>
+    <div class="feature reveal">
+      <h3>The same rules on another Mac</h3>
+      <p>Export your rules to a file and import them elsewhere, adding to or replacing what is there. You can also strip tracking parameters such as utm_ before opening.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="price"><div class="wrap">
+  <h2>Price</h2>
+  <div class="price reveal">
+    <p class="amount">JPY 980 <small>one-time, tax included</small></p>
+    <ul class="price-list">
+      <li>Try <strong>every feature free for 14 days</strong> first</li>
+      <li><strong>All future updates are free</strong>, installed from inside the app with one button</li>
+      <li><strong>Pay once.</strong> No subscription, no extra charges</li>
+    </ul>
+  </div>
+  <div class="cta" style="margin-top:1.5rem">
+    <button class="button" data-buy hidden>Buy for JPY 980</button>
+    <a class="button ghost" href="https://github.com/tsubomi-works/profilink-releases/releases/latest">Try it free first</a>
+  </div>
+  <p class="note">Since the free trial lets you check everything, <a href="refund.html">we do not normally refund purchases</a>. Purchases are handled by a reseller acting as merchant of record.</p>
+  <p class="note" data-not-yet>Sales open soon. Until then, Profilink is free to use.</p>
+</div></section>
+
+<section id="specs"><div class="wrap">
+  <h2>Requirements</h2>
+  <div class="scroller reveal"><table>
+    <tr><th>macOS</th><td>macOS 13 (Ventura) or later</td></tr>
+    <tr><th>Mac</th><td>Apple silicon &middot; Intel</td></tr>
+    <tr><th>Destinations</th><td>Google Chrome, Microsoft Edge, Brave (per profile), Safari, Arc, Firefox</td></tr>
+    <tr><th>Links it routes</th><td>Links clicked outside Chrome (Claude, Slack, Mail, Notes, Terminal and so on). Links clicked inside Chrome stay in Chrome.</td></tr>
+    <tr><th>Languages</th><td>English &middot; 日本語</td></tr>
+    <tr><th>Signing</th><td>Signed with an Apple Developer ID and notarized by Apple</td></tr>
+  </table></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Contact</h2>
+  <p>Questions and bug reports: <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a>. We reply in English or Japanese.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <nav><a href="index.html">Home</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="refund.html">Refunds</a><a href="../tokushoho.html">Legal notice (Japanese)</a></nav>
+  <p>Contact: <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a></p>
+  <p>&copy; 2026 tsubomi</p>
+</div></footer>
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script src="../buy.js"></script>
+<script src="../motion.js" defer></script>
+</body>
+</html>

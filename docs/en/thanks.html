@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Your license key &mdash; Profilink</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../appicon.png">
+<style>
+  .key {
+    font-family: var(--mono); font-size: .95rem; word-break: break-all;
+    background: var(--panel); border: 1px solid var(--rule); border-radius: 8px;
+    padding: 1rem 1.1rem; margin: 1rem 0; line-height: 1.6;
+  }
+  .state { min-height: 6rem; }
+  .bad { color: var(--warn); }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="../appicon.png" alt="" width="22" height="22">Profilink</a>
+</div></header>
+
+<section><div class="wrap"><article>
+  <h1 style="font-size:1.8rem">Thank you</h1>
+  <div class="state" id="state"><p>Getting your license key…</p></div>
+  <div id="next" hidden>
+    <h2>How to enter it</h2>
+    <ol>
+      <li>Click the Profilink icon in the menu bar, then click “Settings…” at the bottom</li>
+      <li>Open “About” on the left</li>
+      <li>Paste the key above into the “License” field and click “Activate”</li>
+    </ol>
+    <p class="note">We have also emailed you the same key, so you can close this page and use the email instead. If it does not arrive, write to <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a>.</p>
+  </div>
+</article></div></section>
+
+<footer><div class="wrap">
+  <nav><a href="index.html">Home</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="refund.html">Refunds</a><a href="../tokushoho.html">Legal notice (Japanese)</a></nav>
+  <p><a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a></p>
+</div></footer>
+
+<script>
+/**
+ * いま支払いが終わった購入のライセンスキーを出す（TouchRotator の thanks.html と同じ作り）。
+ *
+ * このページ自身は何も知らない。Paddle の取引番号をキーを渡す仕組み（Cloudflare Worker）に
+ * 渡し、そちらが Paddle に「本当に支払われたか」を確かめてからキーを返す。同じ取引番号には
+ * 必ず同じキーが返るので、読み込み直しても、閉じて開き直しても安全。
+ */
+// キーを渡す仕組みの URL。Cloudflare に Worker を置いたら入れる。
+const KEY_SERVICE = "https://profilink-keys.small-leaf-0ba1.workers.dev";
+const MAIL = "info@tsubomi.jp";
+
+const state = document.getElementById("state");
+
+function say(text, bad) {
+  state.innerHTML = "";
+  const p = document.createElement("p");
+  if (bad) p.className = "bad";
+  p.textContent = text;
+  state.appendChild(p);
+}
+
+function showKey(key) {
+  state.innerHTML = "";
+  const label = document.createElement("p");
+  label.textContent = "Your license key:";
+  const box = document.createElement("div");
+  box.className = "key";
+  box.textContent = key;
+  state.append(label, box);
+  document.getElementById("next").hidden = false;
+}
+
+async function run() {
+  const id = new URLSearchParams(location.search).get("_ptxn");
+  if (!id) return say("No purchase was found. Please open this page from the link shown after your purchase.", true);
+  if (!KEY_SERVICE) return say("We could not fetch your key. Write to " + MAIL + " and we will send it right away.", true);
+  try {
+    const response = await fetch(`${KEY_SERVICE}?txn=${encodeURIComponent(id)}`);
+    const answer = await response.json();
+    if (response.status === 402) return say("This purchase is not complete yet. Please open this page again once payment has gone through.", true);
+    if (!response.ok || !answer.key) return say("We could not fetch your key. Write to " + MAIL + " and we will send it right away.", true);
+    showKey(answer.key);
+  } catch {
+    say("We could not fetch your key. Write to " + MAIL + " and we will send it right away.", true);
+  }
+}
+
+run();
+</script>
+</body>
+</html>

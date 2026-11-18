@@ -11,6 +11,8 @@
 <meta property="og:description" content="リンクを押すと、URL に合わせて正しいブラウザ・正しいアカウントで自動で開きます。">
 <meta property="og:image" content="https://profilink.tsubomi.jp/appicon.png">
 <meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<link rel="alternate" hreflang="en" href="https://profilink.tsubomi.jp/en/">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="appicon.png">
@@ -19,6 +21,7 @@
 <header class="top"><div class="wrap">
   <a class="brand" href="index.html"><img src="appicon.png" alt="" width="22" height="22">Profilink</a>
   <nav class="links"><a href="#features">できること</a><a href="#price">価格</a><a href="#specs">動作環境</a></nav>
+  <nav class="langs"><a href="index.html" aria-current="true">日本語</a><a href="en/index.html">English</a></nav>
 </div></header>
 
 <div class="hero"><div class="wrap">
@@ -49,7 +52,7 @@
         <div class="before"><b>これまで</b>最後に使った Chrome で開き、権限エラーでログインし直し</div>
         <div class="after"><b>Profilink</b>ルールどおりのプロファイルで、ログイン済みのまま開く</div>
       </div>
-      <p>ルールは「ドメイン」「前方一致」「正規表現」の 3 種類。<code>localhost:3000</code> のようにポート番号でも分けられるので、開発中のダッシュボードもプロジェクトごとに振り分けられます。</p>
+      <p>ルールは「ドメイン」「前方一致」「正規表現」「すべて」の 4 種類。<code>localhost:3000</code> のようにポート番号でも分けられるので、開発中のダッシュボードもプロジェクトごとに振り分けられます。</p>
       <p class="step">設定画面の判定テストに URL を入れると、どのルールに当たるかをその場で確かめられます。</p>
     </div>
     <figure class="fig">
@@ -105,6 +108,36 @@
   </div>
 </div></section>
 
+<section id="more"><div class="wrap">
+  <h2>ほかにも</h2>
+  <div class="features">
+    <div class="feature reveal">
+      <h3>押したアプリで分ける</h3>
+      <p>「Slack と Teams で押したリンクは仕事用、LINE とメッセージは個人用」のように、リンクを押したアプリごとに開き先を決められます。URL のルールと組み合わせることもできます。</p>
+    </div>
+    <div class="feature reveal">
+      <h3>包まれたリンクも、中身で判定</h3>
+      <p>Outlook・Teams の「安全なリンク」や、Google・Slack・Facebook などのリダイレクトは、本当の URL を取り出して判定します。会社のメールから開いても、ドメインのルールがそのまま効きます。</p>
+    </div>
+    <div class="feature reveal">
+      <h3>キー 1 つで、その場だけ変える</h3>
+      <p><b>⌥</b> を押しながらリンクを押すと選択画面、<b>⇧</b> を押しながらだとルールを使わずに決めた場所で開きます。設定を開かずに「今回だけ」ができます。</p>
+    </div>
+    <div class="feature reveal">
+      <h3>シークレットウィンドウで開く</h3>
+      <p>ルールごとに、シークレット（プライベート）ウィンドウで開くかを選べます。Chrome・Edge・Brave・Firefox で使えます。</p>
+    </div>
+    <div class="feature reveal">
+      <h3>履歴で、どこに行ったか分かる</h3>
+      <p>届いたリンク、押したアプリ、どこで開いたかを最大 500 件、この Mac にだけ残します。履歴からそのままルールを作れます。</p>
+    </div>
+    <div class="feature reveal">
+      <h3>別の Mac にも同じルールを</h3>
+      <p>ルールはファイルに書き出して、別の Mac で読み込めます。今のルールに足すか、置き換えるかを選べます。追跡用のパラメータ（utm_ など）を外して開く設定もあります。</p>
+    </div>
+  </div>
+</div></section>
+
 <section><div class="wrap">
   <h2>こんな人に</h2>
   <div class="features">
@@ -152,7 +185,7 @@
     <tr><th>Mac</th><td>Apple silicon &middot; Intel の両方</td></tr>
     <tr><th>振り分け先</th><td>Google Chrome・Microsoft Edge・Brave（プロファイルごと）、Safari・Arc・Firefox</td></tr>
     <tr><th>振り分けられるリンク</th><td>Chrome の外で押したリンク（Claude・Slack・メール・メモ・ターミナルなど）。Chrome の中で押したリンクは、そのまま Chrome で開きます</td></tr>
-    <tr><th>言語</th><td>日本語</td></tr>
+    <tr><th>言語</th><td>日本語 &middot; English</td></tr>
     <tr><th>署名</th><td>Apple Developer ID で署名・Apple の公証済み</td></tr>
   </table></div>
 </div></section>

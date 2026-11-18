@@ -9,7 +9,9 @@
 const PADDLE_TOKEN = "live_caa95e53994f8145b0400f7618d";
 // Profilink（980 円・買い切り）の価格 ID。Paddle で商品を作ったら入れる（pri_…）。
 const PADDLE_PRICE = "pri_01m7mt5t0y8pj56pzxyx4wbz63";
-const THANKS_URL = "https://profilink.tsubomi.jp/thanks.html";
+// ページの言語（<html lang>）。英語のページでは購入画面と購入後のページも英語にする。
+const LANG = document.documentElement.lang === "en" ? "en" : "ja";
+const THANKS_URL = LANG === "en" ? "https://profilink.tsubomi.jp/en/thanks.html" : "https://profilink.tsubomi.jp/thanks.html";
 
 const configured = PADDLE_TOKEN !== "" && PADDLE_PRICE !== "" && typeof Paddle !== "undefined";
 
@@ -34,12 +36,12 @@ const COUPON = (new URLSearchParams(location.search).get("coupon") || "").trim()
 
 document.querySelectorAll("[data-buy]").forEach((button) => {
   button.hidden = !configured;
-  if (COUPON) button.textContent = "クーポンを使って受け取る";
+  if (COUPON) button.textContent = LANG === "en" ? "Redeem your coupon" : "クーポンを使って受け取る";
   button.addEventListener("click", (event) => {
     event.preventDefault();
     const checkout = {
       items: [{ priceId: PADDLE_PRICE, quantity: 1 }],
-      settings: { locale: "ja" },
+      settings: { locale: LANG },
     };
     if (COUPON) checkout.discountCode = COUPON;
     Paddle.Checkout.open(checkout);
