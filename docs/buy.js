@@ -42,6 +42,8 @@ document.querySelectorAll("[data-buy]").forEach((button) => {
     const checkout = {
       items: [{ priceId: PADDLE_PRICE, quantity: 1 }],
       settings: { locale: LANG },
+      // 購入後のメールの言語。Paddle が取引に残し、キーを渡す仕組み（worker）が読む。
+      customData: { lang: LANG },
     };
     if (COUPON) checkout.discountCode = COUPON;
     Paddle.Checkout.open(checkout);
