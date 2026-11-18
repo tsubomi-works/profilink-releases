@@ -187,7 +187,7 @@ h1 {
 img.shot { display: block; width: 100%; height: auto; margin: 0; }
 /* アプリの画面写真は、撮った大きさ（pt）より大きく引き伸ばさない。写真は 3 倍の細かさで
    撮っているので、この上限までなら Retina の画面でもくっきり見える。 */
-img.shot.panel { max-width: 380px; border-radius: 26px; box-shadow: 0 18px 50px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.06); }
+img.shot.menu-panel { max-width: 380px; border-radius: 26px; box-shadow: 0 18px 50px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.06); }
 .macwin.app { max-width: 440px; margin: 0 auto; }
 .shot-figure { margin: 0; display: grid; justify-items: center; }
 .shot-figure figcaption { max-width: 460px; margin-top: .9rem; font-size: .8rem; color: var(--muted); }
